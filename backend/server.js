@@ -1,11 +1,15 @@
 import express from "express";
+import colors from "colors";
 import cors from "cors";
 import dotenv from "dotenv";
 import router from "./routes/goalRoutes.js";
 import { errorHandler } from "./middlewares/errorMiddleware.js";
+import connectDB from "./config/db.js";
 dotenv.config();
 console.log("NODE_ENV: ",process.env.NODE_ENV);
 
+connectDB();
+ 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
