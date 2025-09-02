@@ -1,10 +1,15 @@
 // controllers/goalController.js
 
-export const getGoals = (req, res) => {
-  res.status(200).json({ message: "Get Goals." });
-};
+// const asyncHandler= require('express-async-handler');
+import asyncHandler from 'express-async-handler';
 
-export const setGoals = (req, res) => {
+export const getGoals = asyncHandler(async (req, res) => {
+  res.status(200).json({ message: "Get Goals." });
+});
+
+
+
+export const setGoals = asyncHandler(async (req, res) => {
   if (!req.body.text) {
         // return res.status(400).json({ message: "Please add a text field." });
         res.status(400);
@@ -13,12 +18,12 @@ export const setGoals = (req, res) => {
   }
 
   res.status(201).json({ message: "Set Goals." });
-};
+});
 
-export const updateGoals = (req, res) => {
+export const updateGoals = asyncHandler(async (req, res) => {
   res.status(200).json({ message: `Update Goal ${req.params.id}.` });
-};
+});
 
-export const deleteGoals = (req, res) => {
+export const deleteGoals = asyncHandler(async (req, res) => {
   res.status(200).json({ message: `Delete Goal ${req.params.id}.` });
-};
+});
